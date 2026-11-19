@@ -351,27 +351,89 @@
 }
 
 
+:root {
+  --pine-deep: #082c47;
+  --sky: #55c7f2;
+}
 
-.admission-ticker { position: relative; z-index: 4; display: flex; min-height: 46px; align-items: stretch; overflow: hidden; color: var(--pine-deep); background: var(--sky); }
-.admission-ticker__label { display: flex; flex: 0 0 auto; align-items: center; padding: 0 20px; color: white; background: var(--pine-deep); font-size: 8px; font-weight: 800; letter-spacing: .15em; }
-.admission-ticker__viewport { display: flex; min-width: 0; flex: 1; align-items: center; overflow: hidden; }
-.admission-ticker__track { display: flex; width: max-content; flex: 0 0 auto; align-items: center; gap: 34px; padding-left: 30px; white-space: nowrap; animation: admission-ticker-scroll 48s linear infinite; }
-.admission-ticker__track p { margin: 0; font-size: 10px; font-weight: 600; letter-spacing: .012em; }
-.admission-ticker__spark { color: white; font-size: 15px; }
-.admission-ticker:hover .admission-ticker__track, .admission-ticker:focus-within .admission-ticker__track { animation-play-state: paused; }
-@keyframes admission-ticker-scroll { to { transform: translateX(-50%); } }
+.admission-ticker {
+  display: flex;
+  min-height: 46px;
+  overflow: hidden;
+  color: var(--pine-deep);
+  background: var(--sky);
+}
+
+.admission-ticker__label {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  background: var(--pine-deep);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.admission-ticker__viewport {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  overflow: hidden;
+}
+
+.admission-ticker__track {
+  display: flex;
+  width: max-content;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 34px;
+  padding-left: 30px;
+  white-space: nowrap;
+  animation: admission-ticker-scroll 48s linear infinite;
+}
+
+.admission-ticker__track p {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .012em;
+}
+
+.admission-ticker:hover .admission-ticker__track,
+.admission-ticker:focus-within .admission-ticker__track {
+  animation-play-state: paused;
+}
+
+@keyframes admission-ticker-scroll {
+  to { transform: translateX(-50%); }
+}
 
 @media (max-width: 720px) {
   .admission-ticker { min-height: 42px; }
-  .admission-ticker__label { padding-inline: 12px; font-size: 7px; letter-spacing: .11em; }
-  .admission-ticker__track { gap: 24px; padding-left: 20px; animation-duration: 43s; }
+  .admission-ticker__label {
+    padding-inline: 12px;
+    font-size: 7px;
+    letter-spacing: .11em;
+  }
+  .admission-ticker__track {
+    gap: 24px;
+    padding-left: 20px;
+    animation-duration: 43s;
+  }
   .admission-ticker__track p { font-size: 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .admission-ticker { min-height: 46px; }
-  .admission-ticker__viewport { overflow: visible; }
-  .admission-ticker__track { width: auto; max-width: 100%; flex-wrap: wrap; gap: 0; padding: 8px 12px; white-space: normal; animation: none; }
-  .admission-ticker__track p[aria-hidden="true"], .admission-ticker__spark { display: none; }
-  .admission-ticker__track p { font-size: 10px; line-height: 1.5; }
+  .admission-ticker__track {
+    width: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    white-space: normal;
+    animation: none;
+  }
+  .admission-ticker__track p[aria-hidden="true"],
+  .admission-ticker__spark { display: none; }
 }
