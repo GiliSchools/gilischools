@@ -357,83 +357,163 @@
 }
 
 .admission-ticker {
-  display: flex;
-  min-height: 46px;
-  overflow: hidden;
-  color: var(--pine-deep);
-  background: var(--sky);
-}
+            --pine-deep: #082c47;
+            --sky: #55c7f2;
+            --pink: #ed4b9b;
+            position: relative;
+            z-index: 5;
+            display: flex;
+            min-height: 48px;
+            width: 100%;
+            overflow: hidden;
+            color: var(--pine-deep);
+            background: linear-gradient(105deg, #55c7f2 0%, #8cdef8 48%, #55c7f2 100%);
+            border-top: 1px solid rgba(8, 44, 71, .12);
+            border-bottom: 3px solid var(--pine-deep);
+            box-shadow: 0 5px 16px rgba(8, 44, 71, .13);
+        }
 
-.admission-ticker__label {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  padding: 0 20px;
-  color: white;
-  background: var(--pine-deep);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: .15em;
-}
+        .admission-ticker__label {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 10px;
+            padding: 0 23px;
+            color: #fff;
+            background: var(--pine-deep);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .13em;
+            white-space: nowrap;
+        }
 
-.admission-ticker__viewport {
-  display: flex;
-  min-width: 0;
-  flex: 1;
-  align-items: center;
-  overflow: hidden;
-}
+        .admission-ticker__label::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -13px;
+            width: 26px;
+            height: 100%;
+            background: var(--pine-deep);
+            transform: skewX(-17deg);
+        }
 
-.admission-ticker__track {
-  display: flex;
-  width: max-content;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 34px;
-  padding-left: 30px;
-  white-space: nowrap;
-  animation: admission-ticker-scroll 48s linear infinite;
-}
+        .admission-ticker__label-mark {
+            display: grid;
+            place-items: center;
+            width: 23px;
+            height: 23px;
+            color: var(--pine-deep);
+            background: var(--sky);
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 50%;
+            font-size: 12px;
+        }
 
-.admission-ticker__track p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: .012em;
-}
+        .admission-ticker__viewport {
+            position: relative;
+            display: flex;
+            min-width: 0;
+            flex: 1;
+            align-items: center;
+            overflow: hidden;
+        }
 
-.admission-ticker:hover .admission-ticker__track,
-.admission-ticker:focus-within .admission-ticker__track {
-  animation-play-state: paused;
-}
+        .admission-ticker__viewport::before,
+        .admission-ticker__viewport::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            width: 28px;
+            pointer-events: none;
+        }
 
-@keyframes admission-ticker-scroll {
-  to { transform: translateX(-50%); }
-}
+        .admission-ticker__viewport::before {
+            left: 0;
+            background: linear-gradient(90deg, rgba(85,199,242,.95), transparent);
+        }
 
-@media (max-width: 720px) {
-  .admission-ticker { min-height: 42px; }
-  .admission-ticker__label {
-    padding-inline: 12px;
-    font-size: 14px;
-    letter-spacing: .11em;
-  }
-  .admission-ticker__track {
-    gap: 24px;
-    padding-left: 20px;
-    animation-duration: 43s;
-  }
-  .admission-ticker__track p { font-size: 15px; }
-}
+        .admission-ticker__viewport::after {
+            right: 0;
+            background: linear-gradient(270deg, rgba(85,199,242,.95), transparent);
+        }
 
-@media (prefers-reduced-motion: reduce) {
-  .admission-ticker__track {
-    width: auto;
-    max-width: 100%;
-    flex-wrap: wrap;
-    white-space: normal;
-    animation: none;
-  }
-  .admission-ticker__track p[aria-hidden="true"],
-  .admission-ticker__spark { display: none; }
-}
+        .admission-ticker__track {
+            display: flex;
+            width: max-content;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 26px;
+            padding-left: 30px;
+            white-space: nowrap;
+            animation: admission-ticker-scroll 48s linear infinite;
+            will-change: transform;
+        }
+
+        .admission-ticker__track p {
+            margin: 0;
+            color: var(--pine-deep);
+            font-size: 15px;
+            line-height: 1.45;
+            font-weight: 800;
+            letter-spacing: .025em;
+        }
+
+        .admission-ticker__spark {
+            color: #fff;
+            font-size: 16px;
+            text-shadow: 0 1px 3px rgba(8,44,71,.25);
+        }
+
+        .admission-ticker:hover .admission-ticker__track,
+        .admission-ticker:focus-within .admission-ticker__track {
+            animation-play-state: paused;
+        }
+
+        @keyframes admission-ticker-scroll {
+            to { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 720px) {
+            .admission-ticker { min-height: 43px; }
+            .admission-ticker__label {
+                gap: 7px;
+                padding: 0 13px;
+                font-size: 8px;
+                letter-spacing: .08em;
+            }
+            .admission-ticker__label-mark {
+                width: 19px;
+                height: 19px;
+                font-size: 10px;
+            }
+            .admission-ticker__track {
+                gap: 20px;
+                padding-left: 22px;
+                animation-duration: 43s;
+            }
+            .admission-ticker__track p { font-size: 12px; }
+            .admission-ticker__spark { font-size: 13px; }
+        }
+
+        @media (max-width: 380px) {
+            .admission-ticker__label { padding-inline: 9px; }
+            .admission-ticker__label-mark { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .admission-ticker__track {
+                width: auto;
+                max-width: 100%;
+                flex-wrap: wrap;
+                white-space: normal;
+                animation: none;
+                padding: 8px 14px;
+            }
+            .admission-ticker__track p[aria-hidden="true"],
+            .admission-ticker__spark { display: none; }
+        }
