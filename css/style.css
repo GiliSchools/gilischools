@@ -371,7 +371,7 @@
   padding: 0 20px;
   color: white;
   background: var(--pine-deep);
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: .15em;
 }
@@ -397,7 +397,7 @@
 
 .admission-ticker__track p {
   margin: 0;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: .012em;
 }
@@ -415,7 +415,7 @@
   .admission-ticker { min-height: 42px; }
   .admission-ticker__label {
     padding-inline: 12px;
-    font-size: 7px;
+    font-size: 14px;
     letter-spacing: .11em;
   }
   .admission-ticker__track {
@@ -423,7 +423,7 @@
     padding-left: 20px;
     animation-duration: 43s;
   }
-  .admission-ticker__track p { font-size: 9px; }
+  .admission-ticker__track p { font-size: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
